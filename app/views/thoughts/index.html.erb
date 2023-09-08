@@ -1,0 +1,18 @@
+<h1>Thoughts</h1>
+
+<ul>
+  <% @thoughts.each do |thought| %>
+    <li>
+      <%= thought.title %>
+      <% if user_signed_in? && current_user.is_plumber %>
+          <span>"by " 
+          <%= thought.user.username %></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to "New Thought", new_thought_path %>
+<% if user_signed_in? %>
+<p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></p>
+<% end %>

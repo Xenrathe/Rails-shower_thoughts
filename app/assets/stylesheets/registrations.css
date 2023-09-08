@@ -1,0 +1,218 @@
+html {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
+
+.registrations {
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: white;
+  margin: 0 6%;
+}
+
+.registrations .logo-bg{
+  background-image: url("greek-temple.jpg");
+  background-size: cover;
+  flex: 20%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: start;
+}
+
+.registrations .logo{
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  background-color: rgba(14, 14, 14, 0.438);
+  margin-top: 35px;
+  padding-bottom: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.registrations #logo-img {
+  height: 80px;
+  width: 80px;
+}
+
+.registrations #org-name {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+}
+
+.registrations .photo-credit{
+  display: none;
+}
+
+.registrations .account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.registrations .info-form{
+  flex: 90%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.registrations .intro{
+  justify-self: center;
+  align-self: center;
+  width: 100%;
+  display: flex;
+  align-items: end;
+  padding-top: 15px;
+}
+
+.registrations .intro, .submit {
+  background-color: rgb(243, 243, 243);
+}
+
+.registrations .intro p{
+  color: black;
+  font-size: calc(8px + 0.8vw);
+  font-weight: bold;
+  padding: 0px 15px 0px 15px;
+  margin-top: auto;
+}
+
+.registrations .account-form, .submit{
+  padding: 0px 0px 25px 40px;
+  width: calc(100% - 40px);
+}
+
+.registrations .account-form {
+  background-color: white;
+}
+
+.registrations .account-form p{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.registrations form {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  column-gap: 10%;
+  padding: 0px 200px 0px 0px;
+}
+
+.registrations .single-input {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.registrations input{
+  border:1px solid rgb(228, 228, 228)
+}
+
+.registrations input:focus {
+  outline: transparent !important;
+  border:1px solid tan;
+  box-shadow: 0 3px 3px rgb(241, 218, 187);
+}
+
+.registrations input:invalid{
+  border:1px solid rgb(255, 0, 0);
+}
+
+.registrations input:invalid:focus{
+  box-shadow: 0 3px 3px rgb(255, 166, 166);
+}
+
+.registrations #password-mismatch-msg {
+  font-size: 10px;
+  color: red;
+}
+
+.registrations label {
+  font-size: 12px;
+}
+
+.registrations .submit {
+  box-shadow: inset 0px 5px 5px rgb(184, 184, 184);
+  padding-top: 30px;
+  flex: 1;
+}
+
+.registrations .submit button {
+  border: none;
+  color: white;
+  background-color:tan;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 8px;
+  padding: 10px 30px;
+  box-shadow: 3px 3px 3px rgb(224, 208, 187)
+}
+
+.registrations .submit button:hover {
+  background-color:rgb(180, 153, 118);
+  box-shadow: 3px 3px 3px rgb(170, 157, 140)
+}
+
+.registrations .submit button:active {
+  background-color:rgb(136, 116, 89);
+  transform: scale(0.98);
+  box-shadow: 2px 2px 1px rgb(122, 113, 101)
+}
+
+@media only screen and (min-width: 700px) {
+  .registrations {
+    flex-direction: row;
+    align-items: stretch;
+    width: 70%;
+    margin: 0 10%;
+  }
+
+  .registrations .logo-bg{
+    flex: 35%;
+    min-height: 100%;
+    padding-bottom: 0px;
+  }
+
+  .registrations .logo{
+    margin-top: calc(35vh - 110px);
+    margin-bottom: auto;
+  }
+
+  .registrations #logo-img {
+    height: 110px;
+    width: 110px;
+  }
+
+  .registrations .photo-credit{
+    display: block;
+  }
+
+  .registrations .info-form{
+    flex: 65%;
+    min-height: 100%;
+  }
+
+  .registrations .intro{
+    height: 35%;
+    width: 100%;
+  }
+
+  .registrations .intro p{
+    padding: 0px calc(100px + 0.5vw) 0px 40px;
+  }
+}

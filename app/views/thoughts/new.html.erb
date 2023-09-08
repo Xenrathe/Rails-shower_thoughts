@@ -1,0 +1,19 @@
+<%= form_with model: @thought do |form| %>
+  <%= label_tag(:title, "Title:") %>
+  <%= form.text_field :title %>
+  <%= label_tag(:content, "Thought:") %>
+  <%= form.text_field :content %>
+  <%= form.submit "Release" %>
+<% end %>
+
+  <% if @thought.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being created:</h2>
+
+      <ul>
+      <% @thought.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
