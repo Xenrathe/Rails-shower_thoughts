@@ -4,6 +4,11 @@ html {
   justify-content: center;
 }
 
+body {
+  height: 100vh;
+  margin: 0px;
+}
+
 .registrations {
   height: 100vh;
   margin: 0px;
@@ -18,7 +23,7 @@ html {
 }
 
 .registrations .logo-bg{
-  background-image: url("greek-temple.jpg");
+  background-image: url("hongkong-shower.jpg");
   background-size: cover;
   flex: 20%;
 
@@ -54,6 +59,7 @@ html {
 
 .registrations .photo-credit{
   display: none;
+  color: white;
 }
 
 .registrations .account-form {
@@ -73,23 +79,58 @@ html {
   align-self: center;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: end;
   padding-top: 15px;
 }
 
-.registrations .intro, .submit {
+.rain {
+  display: block;
+  box-sizing: border-box;
+}
+
+.rain__drop {
+  animation-delay: calc(var(--d) * 6s);
+  animation-duration: calc(var(--a) * 12s);
+  animation-iteration-count: infinite;
+  animation-name: drop;
+  animation-timing-function: linear;
+  height: 30px;
+  position: relative;
+  fill: #a1c6cc;
+  transform-origin: center bottom;
+  left: calc(var(--x) * 1%);
+  top: 0px;
+}
+
+.rain__drop path {
+  fill: #a1c6cc;
+  opacity: var(--o);
+  transform: scaleY(calc(var(--s) * 1.5));
+}
+
+@keyframes drop {
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10vh);
+  }
+}
+
+.registrations .intro, .registrations .submit {
   background-color: rgb(243, 243, 243);
 }
 
 .registrations .intro p{
   color: black;
-  font-size: calc(8px + 0.8vw);
-  font-weight: bold;
+  font-size: calc(6px + 0.65vw);
   padding: 0px 15px 0px 15px;
   margin-top: auto;
 }
 
-.registrations .account-form, .submit{
+.registrations .account-form, .registrations .submit{
   padding: 0px 0px 25px 40px;
   width: calc(100% - 40px);
 }
@@ -119,14 +160,14 @@ html {
   max-width: 200px;
 }
 
-.registrations input{
+.sessions input, .registrations input{
   border:1px solid rgb(228, 228, 228)
 }
 
-.registrations input:focus {
+.sessions input:focus, .registrations input:focus {
   outline: transparent !important;
-  border:1px solid tan;
-  box-shadow: 0 3px 3px rgb(241, 218, 187);
+  border:1px solid rgb(140, 184, 210);
+  box-shadow: 0 3px 3px rgb(157, 197, 221);
 }
 
 .registrations input:invalid{
@@ -155,26 +196,26 @@ html {
 .registrations .submit button {
   border: none;
   color: white;
-  background-color:tan;
+  background-color:rgb(140, 184, 210);
   font-weight: bold;
   font-size: 20px;
   border-radius: 8px;
   padding: 10px 30px;
-  box-shadow: 3px 3px 3px rgb(224, 208, 187)
+  box-shadow: 3px 3px 3px rgb(168, 190, 202);
 }
 
 .registrations .submit button:hover {
-  background-color:rgb(180, 153, 118);
-  box-shadow: 3px 3px 3px rgb(170, 157, 140)
+  background-color:rgb(122, 161, 184);
+  box-shadow: 3px 3px 3px rgb(140, 184, 210);
 }
 
 .registrations .submit button:active {
-  background-color:rgb(136, 116, 89);
+  background-color:rgb(104, 137, 156);
   transform: scale(0.98);
-  box-shadow: 2px 2px 1px rgb(122, 113, 101)
+  box-shadow: 2px 2px 1px rgb(122, 161, 184);
 }
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 830px) {
   .registrations {
     flex-direction: row;
     align-items: stretch;
@@ -214,5 +255,15 @@ html {
 
   .registrations .intro p{
     padding: 0px calc(100px + 0.5vw) 0px 40px;
+  }
+
+  @keyframes drop {
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20vh);
+    }
   }
 }

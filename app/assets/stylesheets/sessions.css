@@ -1,0 +1,105 @@
+.sessions {
+  background-image: url("shower-circle.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sessions .sign-in-frame {
+  height: calc((max(400px, 50vh)));
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: calc(max(20vw, 200px));
+  background: rgb(255, 255, 255, 50%);
+  margin: 0 6%;
+  border-radius: 25% 25% 5% 5%;
+
+  /*background: radial-gradient(circle at 50% 50%, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 100%);*/
+}
+
+.sessions .form-frame, .sessions .sign-up-frame {
+  background: rgba(255, 255, 255, 0.75);
+  padding: 15px;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color:rgb(117, 117, 117);
+  width: 75%;
+}
+
+.sessions .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sessions label, .sessions .single-input a {
+  font-size: 12px;
+}
+
+.sessions .password-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sessions .password-row label
+{
+  flex: 1;
+}
+
+/*This should be the 'forgot password' link only */
+.sessions .password-row a {
+  margin-left: auto;
+  margin-right: 10%;
+}
+
+.sessions .submit {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sessions input[type="password"], .sessions input[type="email"] {
+  width: 90%;
+}
+
+.sessions .submit button {
+  border: none;
+  color: white;
+  background-color:rgb(140, 184, 210);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px rgb(168, 190, 202);
+  width: 90%;
+}
+
+.sessions .submit button:hover {
+  background-color:rgb(122, 161, 184);
+  box-shadow: 3px 3px 3px rgb(140, 184, 210);
+}
+
+.sessions .submit button:active {
+  background-color:rgb(104, 137, 156);
+  transform: scale(0.98);
+  box-shadow: 2px 2px 1px rgb(122, 161, 184);
+}
+
+.sessions .sign-up-frame {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
