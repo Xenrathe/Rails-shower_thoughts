@@ -1,0 +1,64 @@
+.thoughts {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+
+.thoughts .title-word {
+  position: relative;
+  margin: 15vh auto;
+  color: transparent;
+  font-family: impact, sans-serif;
+  font-size: 100px;
+  font-weight: bolder;
+  letter-spacing: 0.05em;
+  background-image: url("water-shower.jpg");;
+  background-size: cover;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.thoughts .texture,
+.thoughts .texture::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+  
+.thoughts .texture {
+  background-image: linear-gradient(to bottom, blue, white 50%, red 65%, white);
+  background-attachment: fixed;
+  mix-blend-mode: color-dodge;
+}
+
+.thoughts .texture::after {
+  content: '';
+  background-image: url("water-shower.jpg");
+  background-size: cover;
+  filter: saturate(0) brightness(0.8) contrast(4);
+  mix-blend-mode: multiply;
+}
+
+.thoughts .thoughts-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.thoughts .single-thought {
+  width: 500px;
+  height: 850px;
+  background: radial-gradient(ellipse at center, #0077be 40%, transparent 70%);
+  border-radius: 25%;
+  position: relative;
+  margin: 100px auto;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 119, 190, 0.5);
+}

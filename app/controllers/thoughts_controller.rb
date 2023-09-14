@@ -2,7 +2,7 @@ class ThoughtsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   
   def index
-    @thoughts = Thought.all
+    @thoughts = Thought.order(post_time: :desc)
   end
 
   #def show

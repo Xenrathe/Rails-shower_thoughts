@@ -1,18 +1,25 @@
-<h1>Thoughts</h1>
 
-<ul>
-  <% @thoughts.each do |thought| %>
-    <li>
-      <%= thought.title %>
-      <% if user_signed_in? && current_user.is_plumber %>
-          <span>"by " 
-          <%= thought.user.username %></span>
+<div class="thoughts">
+  <span class="title-word">SHOWER THOUGHTS
+    <span class="texture"></span>
+  </span>
+
+    <div class="thoughts-container">
+      <% @thoughts.each do |thought| %>
+      <div class="single-thought">
+          <p class="title"><%= thought.title %></p>
+          <p class="content"><%= thought.content %></p>
+          <!-- NOTE: EVENTUALLY PLUMBERS WILL BE ABLE TO 'SPOTLIGHT' THOUGHTS
+          <% if user_signed_in? && current_user.is_plumber %>
+              <span>"by " 
+              <%= thought.user.username %></span>
+          <% end %> -->
+        </div>
       <% end %>
-    </li>
-  <% end %>
-</ul>
+    </div>
 
-<%= link_to "New Thought", new_thought_path %>
-<% if user_signed_in? %>
-<p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></p>
-<% end %>
+    <%= link_to "New Thought", new_thought_path %>
+    <% if user_signed_in? %>
+    <p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></p>
+    <% end %>
+</div>
