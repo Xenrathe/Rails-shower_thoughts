@@ -1,19 +1,35 @@
-<%= form_with model: @thought do |form| %>
-  <%= label_tag(:title, "Title:") %>
-  <%= form.text_field :title %>
-  <%= label_tag(:content, "Thought:") %>
-  <%= form.text_field :content %>
-  <%= form.submit "Release" %>
-<% end %>
-
-  <% if @thought.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being created:</h2>
-
-      <ul>
-      <% @thought.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<div class="thoughts-new">
+  <div class="content-container">
+    <div class="title-container">
+      <span class="title-word">SHARE THOUGHT
+        <span class="texture"></span>
+      </span>
     </div>
-  <% end %>
+
+    <div class="form-container">
+    <%= form_with model: @thought do |form| %>
+      <%= label_tag(:title, "TITLE") %>
+      <%= form.text_field :title, size: 15, class: "title-input" %>
+      <%= label_tag(:content, "THOUGHT") %>
+      <%= form.text_area :content, class: "content-input" %>
+      <%= button_tag(type: 'submit', class: "submit") do %>
+      Share Thought
+      <% end %>
+    <% end %>
+    </div>
+
+    <div class="error-container">
+      <% if @thought.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@thought.errors.count, "error") %> prohibited this thought from being created:</h2>
+
+          <ul>
+          <% @thought.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  <div>
+</div>

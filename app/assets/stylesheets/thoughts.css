@@ -10,22 +10,32 @@
   background-color: white;
 }
 
-.thoughts .title-word {
+.thoughts .title-word{
+  background-image: url("water-shower.jpg");
+  background-size: cover;
+  font-size: calc(20px + 5vw);
+}
+
+.thoughts-new .title-word {
+  background-image: url("rainbow-con.jpg");
+  font-size: calc(20px + 3vw);
+}
+
+.thoughts .title-word, .thoughts-new .title-word {
   position: relative;
   margin: 15vh auto;
   color: transparent;
   font-family: impact, sans-serif;
-  font-size: 100px;
   font-weight: bolder;
   letter-spacing: 0.05em;
-  background-image: url("water-shower.jpg");;
-  background-size: cover;
   background-clip: text;
   -webkit-background-clip: text;
 }
 
 .thoughts .texture,
-.thoughts .texture::after {
+.thoughts .texture::after,
+.thoughts-new .texture,
+.thoughts-new .texture::after {
   position: absolute;
   left: 0;
   top: 0;
@@ -33,37 +43,31 @@
   height: 100%;
 }
   
-.thoughts .texture {
+.thoughts .texture, .thoughts-new .texture {
   background-image: linear-gradient(to bottom, blue, white 50%, red 65%, white);
   background-attachment: fixed;
   mix-blend-mode: color-dodge;
 }
 
-.thoughts .texture::after {
-  content: '';
+.thoughts .texture::after{
   background-image: url("water-shower.jpg");
   background-size: cover;
+}
+
+.thoughts-new .texture::after {
+  background-image: url("rainbow-con.jpg");
+}
+
+.thoughts .texture::after, .thoughts-new .texture::after {
+  content: '';
   filter: saturate(0) brightness(0.8) contrast(4);
   mix-blend-mode: multiply;
 }
 
 .thoughts .thoughts-container {
   margin: 0px 100px;
-  column-count: 3; /* Adjust the number of columns as needed */
-  column-gap: 20px; /* Adjust the gap between columns as needed */
-  /*
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-  grid-auto-rows: auto;
-  gap: 50px; Adjust the gap between grid items */
-
-  /*
-  display: flex;
-  gap: 100px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;*/
+  column-count: 3;
+  column-gap: 20px; 
 }
 
 .thoughts .single-thought {
@@ -87,12 +91,98 @@
 }
 
 .thoughts .single-thought:hover {
-  transform: scale(1.05); /* Scale up the container slightly */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Increase the box shadow */
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .thoughts .single-thought .title {
   font-size: 25px;
   align-self: center;
   margin-top: 0px;
+}
+
+.thoughts-new {
+  height: 90vh;
+  width: 90vw;
+  padding: 5vh 5vw;
+  background-image: url("blank-condensation.jpg");
+  background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thoughts-new .title-container {
+  margin: 0px auto;
+}
+
+.thoughts-new .content-container {
+  width: 50vw;
+  height: 50vh;
+  background-color: rgb(255, 255, 255, 50%);
+  padding: 20px;
+  border-radius: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.thoughts-new .form-container {
+  flex-grow: 1;
+}
+
+.thoughts-new form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.thoughts-new label {
+  font-family: impact, sans-serif;
+  color:rgb(99, 99, 99);
+  margin-left: 5px;
+  margin-top: 15px;
+  font-size: 25px;
+}
+
+.thoughts-new .title-input {
+  width: 250px;
+}
+
+.thoughts-new .content-input {
+  min-width: 250px;
+  width: 90%;
+  max-width: calc(100% - 10px);
+  min-height: 11px;
+  height: 200px;
+  max-height: 235px;
+
+  padding: 5px;
+}
+
+.thoughts-new .submit {
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  color: white;
+  background-color:rgb(140, 184, 210);
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px rgb(168, 190, 202);
+  width: 50%;
+}
+
+.thoughts-new .submit:hover {
+  background-color:rgb(122, 161, 184);
+  box-shadow: 3px 3px 3px rgb(140, 184, 210);
+}
+
+.thoughts-new .submit:active {
+  background-color:rgb(104, 137, 156);
+  transform: scale(0.98);
+  box-shadow: 2px 2px 1px rgb(122, 161, 184);
 }
