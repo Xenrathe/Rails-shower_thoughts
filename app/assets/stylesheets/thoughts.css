@@ -150,6 +150,12 @@
   flex-grow: 1;
 }
 
+.thoughts-new .field_with_errors *:first-child {
+  border: red;
+  border-style: ridge;
+  border-width: 2px;
+}
+
 .thoughts-new form {
   display: flex;
   flex-direction: column;
