@@ -11,11 +11,12 @@
     <div class="form-container">
     <%= form_with model: @thought do |form| %>
       <%= label_tag(:title, "TITLE") %>
-      <%= form.text_field :title, size: 30, maxlength: 30, class: "title-input" %>
+      <%= form.text_field :title, size: 30, maxlength: 30, minlength: 3, class: "title-input" %>
+      <div id="title-warning">3 character minimum</div>
       <%= label_tag(:content, "THOUGHT") %>
-      <%= form.text_area :content, maxlength: 500, class: "content-input" %>
-      <div id="content-char-count">500 characters remaining</div>
-      <%= button_tag(type: 'submit', class: "submit") do %>
+      <%= form.text_area :content, maxlength: 500, minlength: 5, class: "content-input" %>
+      <div id="content-char-count">5 character minimum</div>
+      <%= button_tag(type: 'submit', id: "submit-button",  class: "btn-disabled") do %>
       Share Thought
       <% end %>
     <% end %>

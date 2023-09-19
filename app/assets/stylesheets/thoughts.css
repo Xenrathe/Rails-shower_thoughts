@@ -165,9 +165,20 @@
 .thoughts-new label {
   font-family: impact, sans-serif;
   color:rgb(99, 99, 99);
-  margin-left: 5px;
   margin-top: 15px;
   font-size: 25px;
+}
+
+.thoughts-new label, .thoughts-new #title-warning, .thoughts-new #content-char-count{
+  margin-left: 5px;
+}
+
+.thoughts-new #title-warning, .thoughts-new #content-char-count{
+  font-size: 14px;
+}
+
+.thoughts-new #title-warning {
+  color: red;
 }
 
 .thoughts-new .title-input {
@@ -185,28 +196,37 @@
   padding: 5px;
 }
 
-.thoughts-new .submit {
+.thoughts-new #submit-button {
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
   border: none;
   color: white;
-  background-color:rgb(140, 184, 210);
   font-weight: bold;
   font-size: 20px;
   border-radius: 8px;
-  box-shadow: 3px 3px 3px rgb(168, 190, 202);
   width: 50%;
 }
 
-.thoughts-new .submit:hover {
+.thoughts-new .btn-enabled {
+  box-shadow: 3px 3px 3px rgb(168, 190, 202);
+  background-color:rgb(140, 184, 210);
+}
+
+.thoughts-new .btn-enabled:hover {
   background-color:rgb(122, 161, 184);
   box-shadow: 3px 3px 3px rgb(140, 184, 210);
 }
 
-.thoughts-new .submit:active {
+.thoughts-new .btn-enabled:active {
   background-color:rgb(104, 137, 156);
   transform: scale(0.98);
   box-shadow: 2px 2px 1px rgb(122, 161, 184);
+}
+
+.thoughts-new .btn-disabled {
+  background-color:rgb(104, 137, 156);
+  transform: scale(0.98);
+  box-shadow: none;
 }
