@@ -25,6 +25,16 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def destroy
+    @thought = Thought.find(params[:id])
+    @thought.destroy
+
+    respond_to do |format|
+      format.html { redirect_to thoughts_url, notice: 'Thought deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
     def thought_params
