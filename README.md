@@ -15,6 +15,7 @@ To-do List:
 -'Hide' thought functionality
 -'Star' thought functionality
 -'Spotlight' thought functionality
+-Action icons different color if hidden / saved / ****
 -Allow edit thought within 10 minutes of posting
 -Filters
 -New thought / sign-out better implemented

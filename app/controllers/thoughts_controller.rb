@@ -1,6 +1,7 @@
 class ThoughtsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
-  
+  before_action :authenticate_destroy, only: [:destroy]
+
   def index
     @thoughts = Thought.order(post_time: :desc)
   end
@@ -35,10 +36,43 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def hide
+    @thought = Thought.find(params[:id])
+    user_hidden_thought = current_user.user_hidden_thoughts.find_or_initialize_by(thought: @thought)
+
+    if user_hidden_thought.new_record?
+      user_hidden_thought.save
+      render json: { status: 'hidden' }
+    else
+      user_hidden_thought.destroy
+      render json: { status: 'unhidden' }
+    end
+  end
+
+  def favorite
+    @thought = Thought.find(params[:id])
+    user_favorite_thought = current_user.user_favorite_thoughts.find_or_initialize_by(thought: @thought)
+
+    if user_favorite_thought.new_record?
+      user_favorite_thought.save
+      render json: { status: 'favorited' }
+    else
+      user_favorite_thought.destroy
+      render json: { status: 'unfavorited' }
+    end
+  end
+
   private
 
     def thought_params
       params.require(:thought).permit(:title, :content)
     end
 
+    def authenticate_destroy
+      @thought = Thought.find(params[:id])
+      unless current_user && (current_user.plumber_status == 'Master' || @thought.user == current_user)
+        flash[:alert] = "You do not have access to this page."
+        redirect_to root_path
+      end
+    end
 end
