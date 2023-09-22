@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To-do List:
 
-Things you may want to cover:
+* USER
+-Last posted date / can only post once per day
+-'Hidden' thoughts implementation
+-'Starred' thoughts implementation
+-****banning functionality
+-Random chance per X hours to become a 'plumber,' which gives a single SPOTLIGHT ability
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Thoughts
+-Pagination/25 thoughts listed at a time
+-Scrolling to bottom loads next 25
+-'Hide' thought functionality
+-'Star' thought functionality
+-'Spotlight' thought functionality
+-Allow edit thought within 10 minutes of posting
+-Filters
+-New thought / sign-out better implemented
+-Change some of the backgrounds

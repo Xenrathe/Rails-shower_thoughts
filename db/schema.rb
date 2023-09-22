@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_132845) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_22_005903) do
   create_table "thoughts", force: :cascade do |t|
     t.datetime "post_time"
     t.string "title"
@@ -21,6 +21,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_132845) do
     t.datetime "updated_at", null: false
     t.index ["highlight_mode"], name: "index_thoughts_on_highlight_mode"
     t.index ["user_id"], name: "index_thoughts_on_user_id"
+  end
+
+  create_table "user_favorite_thoughts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "thought_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thought_id"], name: "index_user_favorite_thoughts_on_thought_id"
+    t.index ["user_id"], name: "index_user_favorite_thoughts_on_user_id"
+  end
+
+  create_table "user_hidden_thoughts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "thought_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["thought_id"], name: "index_user_hidden_thoughts_on_thought_id"
+    t.index ["user_id"], name: "index_user_hidden_thoughts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,4 +59,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_132845) do
   end
 
   add_foreign_key "thoughts", "users"
+  add_foreign_key "user_favorite_thoughts", "thoughts"
+  add_foreign_key "user_favorite_thoughts", "users"
+  add_foreign_key "user_hidden_thoughts", "thoughts"
+  add_foreign_key "user_hidden_thoughts", "users"
 end
