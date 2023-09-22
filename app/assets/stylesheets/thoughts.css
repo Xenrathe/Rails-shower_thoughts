@@ -64,6 +64,23 @@
   mix-blend-mode: multiply;
 }
 
+.thoughts .thoughts-filters {
+  align-self: center;
+  display: flex;
+  gap: 30px;
+  margin-bottom: 10px;
+  padding: 4px 15px;
+  border-width: 3px;
+  border-style: outset;
+  border-color: black;
+}
+
+.thoughts .thoughts-filters .selected {
+  border-width: 3px;
+  border-style: outset;
+  border-color: gold;
+}
+
 .thoughts .thoughts-container {
   margin: 0px 100px;
   column-count: 3;
@@ -106,11 +123,11 @@
   align-self: end;
 }
 
-.thoughts .single-thought .img-off, .thoughts .single-thought .img-on:hover {
+.thoughts .single-thought .img-off, .thoughts .img-filter, .thoughts .single-thought .img-on:hover {
   filter: invert(100%);
 }
 
-.thoughts .single-thought .img-off:hover, .thoughts .single-thought .img-on {
+.thoughts .single-thought .img-off:hover, .thoughts .img-filter:hover, .thoughts .single-thought .img-on {
   filter: invert(65%) sepia(40%) saturate(1222%) hue-rotate(358deg) brightness(100%) contrast(107%);
 }
 

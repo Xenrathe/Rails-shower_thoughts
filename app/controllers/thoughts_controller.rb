@@ -4,6 +4,19 @@ class ThoughtsController < ApplicationController
 
   def index
     @thoughts = Thought.order(post_time: :desc)
+
+    @selected_filter = params[:filter] || cookies[:selected_filter] || 'visible'
+    cookies[:selected_filter] = @selected_filter
+
+    # Show only UNHIDDEN thoughts only, except for master/admin
+    if current_user.plumber_status != "Master"
+      @thoughts = @thoughts.where.not(id: current_user.hidden_thoughts.pluck(:id))
+    end
+
+    # Show FAVORITE thoughts only
+    @thoughts = @thoughts.where(id: current_user.favorite_thoughts.pluck(:id)) if @selected_filter == "favorite"
+    # Show HIGHLIGHTED thoughts only
+    @thoughts = @thoughts.where(highlight_mode: "true") if @selected_filter == "spotlight"
   end
 
   #def show
