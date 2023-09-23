@@ -32,7 +32,8 @@ class ThoughtsController < ApplicationController
     @thought.user = current_user
     @thought.post_time = DateTime.current
 
-    if @thought.save
+    if (current_user.plumber_status = "Master" || current_user.last_post_date.nil? || current_user.last_post_date < DateTime.current - 24.hours) && @thought.save
+      current_user.update(last_post_date: DateTime.now)
       redirect_to thoughts_path
     else
       render :new, status: :unprocessable_entity

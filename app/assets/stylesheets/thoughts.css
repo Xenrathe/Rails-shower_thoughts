@@ -192,11 +192,17 @@
   height: 100%;
 }
 
-.thoughts-new label {
+.thoughts-new label, .thoughts-new .time-error {
   font-family: impact, sans-serif;
   color:rgb(99, 99, 99);
   margin-top: 15px;
   font-size: 25px;
+}
+
+.thoughts-new .time-error
+{
+  padding-top: 15px;
+  align-self: center;
 }
 
 .thoughts-new label, .thoughts-new #title-warning, .thoughts-new #content-char-count{
