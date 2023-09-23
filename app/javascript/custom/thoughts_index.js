@@ -8,6 +8,8 @@ function actionButton(button)
 
   if (button.classList.contains('hide'))
     url = `/thoughts/${thoughtId}/hide`;
+  else if (button.classList.contains('spotlight'))
+    url = `/thoughts/${thoughtId}/spotlight`;
 
   fetch(url, {
     method: 'POST',
@@ -19,7 +21,7 @@ function actionButton(button)
   })
     .then(response => response.json())
     .then(data => {
-      if (data.status === 'unfavorited' || data.status === 'unhidden') {
+      if (data.status === 'unfavorited' || data.status === 'unhidden' || data.status === 'unspotlighted') {
         // Toggle classes
         childImg.classList.add('img-off');
         childImg.classList.remove('img-on');
@@ -50,7 +52,7 @@ function applySelectedFilter(selected_filter) {
 
 function initializeFunctions()
 {
-  const actionButtons = document.querySelectorAll('.favorite, .hide');
+  const actionButtons = document.querySelectorAll('.favorite, .hide, .spotlight');
 
   actionButtons.forEach(function (button) {
     button.addEventListener('click', function (e) {

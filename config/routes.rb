@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   resources :thoughts, only: [:new, :create, :index, :destroy] do
     member do
       post 'hide'
-      post 'unhide'
       post 'favorite'
-      post 'unfavorite'
+      post 'spotlight'
     end
   end
 

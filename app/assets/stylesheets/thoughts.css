@@ -89,9 +89,6 @@
 
 .thoughts .single-thought {
   break-inside: avoid;
-  background-color: #f0f0f0;
-  border: 2px solid #ccc;
-  border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
   display: inline-block;
@@ -109,7 +106,27 @@
 
 .thoughts .single-thought:hover {
   transform: scale(1.05);
+}
+
+.thoughts .unhighlighted-thought {
+  background-color: #f0f0f0;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.thoughts .unhighlighted-thought:hover {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.thoughts .highlighted-thought {
+  background-color: #fdffe9;
+  border: 2px solid #ffa600;
+  box-shadow: 0 0 10px rgba(255, 196, 0, 0.75);
+  border-radius: 5px;
+}
+
+.thoughts .highlighted-thought:hover {
+  box-shadow: 0 0 20px rgba(255, 196, 0, 0.75);
 }
 
 .thoughts .single-thought .title {

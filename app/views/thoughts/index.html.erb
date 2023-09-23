@@ -7,13 +7,19 @@
 
   <div class="thoughts-filters">
     <%= link_to image_tag("icons/eye.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'visible'), class: "selected filter", data: { filter: 'visible' } %>
-    <%= link_to image_tag("icons/star.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'favorite'), class: "filter" , data: { filter: 'favorite' } %>
+    <% if user_signed_in? %>
+      <%= link_to image_tag("icons/star.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'favorite'), class: "filter" , data: { filter: 'favorite' } %>
+    <% end %>
     <%= link_to image_tag("icons/spotlight-beam.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'spotlight'), class: "filter", data: { filter: 'spotlight' }  %>
   </div>
 
   <div class="thoughts-container">
     <% @thoughts.each do |thought| %>
-    <div class="single-thought">
+    <% if thought.highlight_mode != 'true' %>
+      <div class="single-thought unhighlighted-thought">
+    <% else %>
+      <div class="single-thought highlighted-thought">
+    <% end %>
         <p class="title"><%= thought.title %></p>
         <p class="content"><%= thought.content %></p>
         
@@ -31,9 +37,10 @@
               <% end %>
             </div>
 
-            <% if current_user.plumber_status == 'Yes' || current_user.plumber_status == 'Master' %>
+            <% if (current_user.plumber_status == 'Plumber' && thought.highlight_mode != 'true') || current_user.plumber_status == 'Master' %>
               <div class="plumber">
-                <a href=""><%= image_tag("icons/spotlight-beam.svg", size: "25x25", class: "img-off")%></a>
+                <% spotlight_class = thought.highlight_mode == "true" ? "img-on" : "img-off" %>
+                <%= link_to image_tag("icons/spotlight-beam.svg", size: "25x25", class: spotlight_class), spotlight_thought_path(thought), remote: true, class: "spotlight", data: { thought_id: thought.id } %>
               </div>
             <% end %>
 

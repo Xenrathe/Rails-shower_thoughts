@@ -1,6 +1,7 @@
 class ThoughtsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :authenticate_destroy, only: [:destroy]
+  before_action :authenticate_spotlight, only: [:spotlight]
 
   def index
     @thoughts = Thought.order(post_time: :desc)
@@ -9,12 +10,15 @@ class ThoughtsController < ApplicationController
     cookies[:selected_filter] = @selected_filter
 
     # Show only UNHIDDEN thoughts only, except for master/admin
-    if current_user.plumber_status != "Master"
+    if current_user && current_user.plumber_status != "Master"
       @thoughts = @thoughts.where.not(id: current_user.hidden_thoughts.pluck(:id))
     end
 
     # Show FAVORITE thoughts only
-    @thoughts = @thoughts.where(id: current_user.favorite_thoughts.pluck(:id)) if @selected_filter == "favorite"
+    if current_user
+      @thoughts = @thoughts.where(id: current_user.favorite_thoughts.pluck(:id)) if @selected_filter == "favorite"
+    end
+
     # Show HIGHLIGHTED thoughts only
     @thoughts = @thoughts.where(highlight_mode: "true") if @selected_filter == "spotlight"
   end
@@ -32,7 +36,7 @@ class ThoughtsController < ApplicationController
     @thought.user = current_user
     @thought.post_time = DateTime.current
 
-    if (current_user.plumber_status = "Master" || current_user.last_post_date.nil? || current_user.last_post_date < DateTime.current - 24.hours) && @thought.save
+    if (current_user.plumber_status = 'Master' || current_user.last_post_date.nil? || current_user.last_post_date < DateTime.current - 24.hours) && @thought.save
       current_user.update(last_post_date: DateTime.now)
       redirect_to thoughts_path
     else
@@ -76,6 +80,24 @@ class ThoughtsController < ApplicationController
     end
   end
 
+  def spotlight
+    @thought = Thought.find(params[:id])
+
+    if current_user && current_user.plumber_status == 'Plumber' && @thought.highlight_mode != 'true'
+      @thought.update(highlight_mode: 'true')
+      current_user.update(plumber_status: 'No')
+      render json: { status: 'spotlighted' }
+    elsif current_user && current_user.plumber_status == 'Master'
+      if @thought.highlight_mode == 'true'
+        @thought.update(highlight_mode: 'false')
+        render json: { status: 'unspotlighted' }
+      else
+        @thought.update(highlight_mode: 'true')
+        render json: { status: 'spotlighted' }
+      end
+    end
+  end
+
   private
 
     def thought_params
@@ -85,7 +107,14 @@ class ThoughtsController < ApplicationController
     def authenticate_destroy
       @thought = Thought.find(params[:id])
       unless current_user && (current_user.plumber_status == 'Master' || @thought.user == current_user)
-        flash[:alert] = "You do not have access to this page."
+        flash[:alert] = "You can only delete your own thoughts."
+        redirect_to root_path
+      end
+    end
+
+    def authenticate_spotlight
+      unless current_user && (current_user.plumber_status == 'Master' || current_user.plumber_status == 'Plumber')
+        flash[:alert] = "Only plumbers can spotlight."
         redirect_to root_path
       end
     end
