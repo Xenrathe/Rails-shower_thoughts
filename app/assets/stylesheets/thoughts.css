@@ -64,7 +64,35 @@
   mix-blend-mode: multiply;
 }
 
-.thoughts .thoughts-filters {
+.thoughts .alert {
+  align-self: center;
+  padding: 20px;
+  margin-top: -68px;
+  font-size: 25px;
+  animation: fadeOut ease 4s;
+  opacity: 0;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity:1;
+  }
+  50% {
+    opacity: .75;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.thoughts .index-actions {
+  display: flex;
+  align-self: center;
+  width: 40%;
+  justify-content: space-around;
+}
+
+.thoughts .thoughts-filters, .thoughts .solo-action {
   align-self: center;
   display: flex;
   gap: 30px;
@@ -140,11 +168,15 @@
   align-self: end;
 }
 
-.thoughts .single-thought .img-off, .thoughts .img-filter, .thoughts .single-thought .img-on:hover {
+.thoughts .single-thought .img-off, 
+.thoughts .single-thought .img-on:hover, 
+.thoughts .img-action {
   filter: invert(100%);
 }
 
-.thoughts .single-thought .img-off:hover, .thoughts .img-filter:hover, .thoughts .single-thought .img-on {
+.thoughts .single-thought .img-off:hover, 
+.thoughts .img-action:hover, 
+.thoughts .single-thought .img-on {
   filter: invert(65%) sepia(40%) saturate(1222%) hue-rotate(358deg) brightness(100%) contrast(107%);
 }
 

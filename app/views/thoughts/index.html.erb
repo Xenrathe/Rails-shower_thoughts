@@ -4,15 +4,32 @@
   <span class="title-word">SHOWER THOUGHTS
     <span class="texture"></span>
   </span>
-
-  <div class="thoughts-filters">
-    <%= link_to image_tag("icons/eye.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'visible'), class: "selected filter", data: { filter: 'visible' } %>
-    <% if user_signed_in? %>
-      <%= link_to image_tag("icons/star.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'favorite'), class: "filter" , data: { filter: 'favorite' } %>
-    <% end %>
-    <%= link_to image_tag("icons/spotlight-beam.svg", size: "75x75", class: "img-filter"), thoughts_path(filter: 'spotlight'), class: "filter", data: { filter: 'spotlight' }  %>
+  
+  <% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
   </div>
+  <% end %>
 
+  <div class="index-actions">
+    <div class="new-thought-action">
+      <%= link_to image_tag("icons/shower-head.svg", size: "80x85", class: "img-action"), new_thought_path, class: "solo-action" %>
+    </div>
+    <div class="thoughts-filters">
+      <%= link_to image_tag("icons/eye.svg", size: "75x75", class: "img-action"), thoughts_path(filter: 'visible'), class: "selected filter", data: { filter: 'visible' } %>
+      <% if user_signed_in? %>
+        <%= link_to image_tag("icons/star.svg", size: "75x75", class: "img-action"), thoughts_path(filter: 'favorite'), class: "filter" , data: { filter: 'favorite' } %>
+      <% end %>
+      <%= link_to image_tag("icons/spotlight-beam.svg", size: "75x75", class: "img-action"), thoughts_path(filter: 'spotlight'), class: "filter", data: { filter: 'spotlight' }  %>
+    </div>
+    <div class="login-action">
+      <% if user_signed_in? %>
+        <%= link_to image_tag("icons/logout-variant.svg", size: "80x85", class: "img-action"), destroy_user_session_path, class: "solo-action", method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to sign out?' } %>
+      <% else %>
+        <%= link_to image_tag("icons/logout-variant.svg", size: "80x85", class: "img-action"), new_user_session_path, class: "solo-action" %>
+      <% end %>
+    </div>
+  </div>
   <div class="thoughts-container">
     <% @thoughts.each do |thought| %>
     <% if thought.highlight_mode != 'true' %>
@@ -55,9 +72,4 @@
       </div>
     <% end %>
   </div>
-
-  <%= link_to "New Thought", new_thought_path %>
-  <% if user_signed_in? %>
-  <p><%= link_to "Sign Out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %></p>
-  <% end %>
 </div>
