@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post 'hide'
       post 'favorite'
       post 'spotlight'
+      post 'shadow'
     end
   end
 
