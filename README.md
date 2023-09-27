@@ -6,6 +6,7 @@ To-do List:
 -****banning functionality
 -Random chance per X hours to become a 'plumber,' which gives a single SPOTLIGHT ability
 -Feedback when creating an account in which the password, etc is too low characters
+-Error/bug with form and styling
 
 * Thoughts
 -Pagination/25 thoughts listed at a time

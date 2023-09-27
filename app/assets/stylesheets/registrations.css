@@ -130,26 +130,33 @@ body {
   margin-top: auto;
 }
 
+.registrations form {
+  display: flex;
+  flex-direction: column;
+  column-gap: 10%;
+  height: 65%;
+}
+
 .registrations .account-form, .registrations .submit{
   padding: 0px 0px 25px 40px;
-  width: calc(100% - 40px);
+  width: 100%;
 }
 
 .registrations .account-form {
   background-color: white;
 }
 
-.registrations .account-form p{
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.registrations form {
+.registrations .account-form-inputs {
   display: flex;
   flex-wrap: wrap;
   row-gap: 15px;
   column-gap: 10%;
   padding: 0px 200px 0px 0px;
+}
+
+.registrations .account-form p{
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .registrations .single-input {
@@ -190,7 +197,7 @@ body {
 .registrations .submit {
   box-shadow: inset 0px 5px 5px rgb(184, 184, 184);
   padding-top: 30px;
-  flex: 1;
+  flex-grow: 5;
 }
 
 .registrations .submit button {
