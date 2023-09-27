@@ -87,9 +87,15 @@
 
 .thoughts .index-actions {
   display: flex;
+  position: sticky;
+  z-index: 9999;
+  top: 0px;
+  padding-top: 5px;
   align-self: center;
-  width: 40%;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: center;
+  gap: 65px;
+  background: white;
 }
 
 .thoughts .thoughts-filters, .thoughts .solo-action {
@@ -110,7 +116,7 @@
 }
 
 .thoughts .thoughts-container {
-  margin: 0px 100px;
+  margin: 0px 100px 25px 100px;
   column-count: 3;
   column-gap: 20px; 
 }
