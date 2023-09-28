@@ -8,8 +8,8 @@ To-do List:
 -Feedback when creating an account in which the password, etc is too low characters or passwords don't match
 
 * Thoughts
--Pagination/25 thoughts listed at a time
--Scrolling to bottom loads next 25
+-Pagination adds new thoughts to the top
+-The actions being sticky no longer seems to work
 -Action icons different color if spotlight / ****
 -Allow edit thought within 10 minutes of posting
 -Button for back to thoughts index from new thought view

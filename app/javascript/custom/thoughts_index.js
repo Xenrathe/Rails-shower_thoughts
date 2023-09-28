@@ -52,10 +52,29 @@ function applySelectedFilter(selected_filter) {
   });
 }
 
+function loadMoreThoughts() {
+  const thoughtsContainer = document.querySelector('.thoughts-container');
+  var nextPage = parseInt(document.querySelector("#current-page").value) + 1; // Example: Get the next page number
+
+  const url = `/thoughts/page?page=${nextPage}`;
+  fetch(url)
+    .then((response) => response.text())
+    .then((data) => {
+      thoughtsContainer.insertAdjacentHTML('beforeend', data);
+      nextPage++;
+    })
+    .catch((error) => {
+      console.error('Error loading more thoughts:', error);
+    });
+
+    // Update the current page value
+    document.querySelector("#current-page").value = nextPage;
+}
+
 function initializeFunctions()
 {
+  // Action buttons (favorite, hide, spotlight, shadow)
   const actionButtons = document.querySelectorAll('.favorite, .hide, .spotlight, .shadow');
-
   actionButtons.forEach(function (button) {
     button.addEventListener('click', function (e) {
       e.preventDefault();
@@ -63,6 +82,7 @@ function initializeFunctions()
     });
   });
 
+  // Filter buttons
   const storageKey = 'selected_filter';
   const cookies = document.cookie.split(';');
   for (let i = 0; i < cookies.length; i++) {
@@ -71,7 +91,21 @@ function initializeFunctions()
       applySelectedFilter(decodeURIComponent(cookie.substring(storageKey.length + 1)));
     }
   }
+
+  // Pagination - load more thoughts when user scrolls to bottom of page
+  // Has a 500 ms timeout
+  window.addEventListener("scroll", () => {
+    if (!throttleTimeout) {
+      throttleTimeout = setTimeout(() => {
+        throttleTimeout = null;
+        if (window.innerHeight + window.scrollY >= document.querySelector('.thoughts').offsetHeight) {
+          loadMoreThoughts();
+        }
+      }, 500);
+    }
+  });
 }
 
+let throttleTimeout;
 initializeFunctions();
 document.addEventListener('turbo:render', function() { initializeFunctions(); });

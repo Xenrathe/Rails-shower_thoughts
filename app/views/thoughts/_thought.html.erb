@@ -1,0 +1,39 @@
+<% if thought.highlight_mode != 'true' %>
+  <div class="single-thought unhighlighted-thought">
+<% else %>
+  <div class="single-thought highlighted-thought">
+<% end %>
+    <p class="title"><%= thought.title %></p>
+    <p class="content"><%= thought.content %></p>
+    
+    <% if user_signed_in? %>
+      <div class="actions">
+        <div class="non-plumber">
+          <% hide_class = current_user.hidden_thoughts.include?(thought) ? "img-on" : "img-off" %>
+          <%= link_to image_tag("icons/eye-off.svg", size: "25x25", class: hide_class), hide_thought_path(thought), remote: true, class: 'hide', data: { thought_id: thought.id } %>
+          <% favorite_class = current_user.favorite_thoughts.include?(thought) ? "img-on" : "img-off" %>
+          <%= link_to image_tag("icons/star.svg", size: "25x25", class: favorite_class), favorite_thought_path(thought), remote: true, class: "favorite", data: { thought_id: thought.id } %>
+          
+          <% if thought.user_id == current_user.id &&  current_user.plumber_status != 'Master'%>
+            <%= link_to image_tag("icons/delete.svg", size: "25x25", class: "img-off") , thought_path(thought), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this thought?'} %>
+            <a href=""><%= image_tag("icons/text-box-edit.svg", size: "25x25", class: "img-off")%></a>
+          <% end %>
+        </div>
+
+        <% if (current_user.plumber_status == 'Plumber' && thought.highlight_mode != 'true') || current_user.plumber_status == 'Master' %>
+          <div class="plumber">
+            <% spotlight_class = thought.highlight_mode == "true" ? "img-on" : "img-off" %>
+            <%= link_to image_tag("icons/spotlight-beam.svg", size: "25x25", class: spotlight_class), spotlight_thought_path(thought), remote: true, class: "spotlight", data: { thought_id: thought.id } %>
+          </div>
+        <% end %>
+
+        <% if current_user.plumber_status == 'Master' %>
+          <div class="master">
+            <%= link_to image_tag("icons/delete.svg", size: "25x25", class: "img-off"), thought_path(thought), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this thought?'} %>
+            <% shadow_class = thought.user.plumber_status == 'Shadow' ? "img-on" : "img-off" %>
+            <%= link_to image_tag("icons/web-remove.svg", size: "25x25", class: shadow_class), shadow_thought_path(thought), remote: true, class: "shadow", data: { thought_id: thought.id } %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>

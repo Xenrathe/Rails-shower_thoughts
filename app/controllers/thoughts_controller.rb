@@ -4,6 +4,42 @@ class ThoughtsController < ApplicationController
   before_action :authenticate_spotlight, only: [:spotlight]
   before_action :authenticate_shadow, only: [:shadow]
 
+  def page
+    @thoughts = Thought.order(post_time: :desc)
+
+    @selected_filter = params[:filter] || cookies[:selected_filter] || 'visible'
+    cookies[:selected_filter] = @selected_filter
+
+    # If user isn't admin, show only posts by non-shadowbanned users
+    # Shadowbanned users will still see their own posts, however
+    # NOTE: A shadowbanned user could easily logout and note that their own post is not visible
+    # Which would alert them to the shadowban and motivate creating a new account
+    # This is a weakness of this system that could be partially ameloriated through using a more advanced fingerprint system
+    if current_user
+      if current_user.plumber_status != 'Master'
+        @thoughts = @thoughts.includes(:user).where.not(users: { plumber_status: 'Shadow'}).or(Thought.where(user_id: current_user.id))
+      end
+    else
+      @thoughts = @thoughts.includes(:user).where.not(users: { plumber_status: 'Shadow'})
+    end
+
+    # Show only UNHIDDEN thoughts only, except for master/admin
+    if current_user && current_user.plumber_status != "Master"
+      @thoughts = @thoughts.where.not(id: current_user.hidden_thoughts.pluck(:id))
+    end
+
+    # Show FAVORITE thoughts only
+    if current_user
+      @thoughts = @thoughts.where(id: current_user.favorite_thoughts.pluck(:id)) if @selected_filter == "favorite"
+    end
+
+    # Show HIGHLIGHTED thoughts only
+    @thoughts = @thoughts.where(highlight_mode: "true") if @selected_filter == "spotlight"
+
+    #Paginate thoughts
+    @thoughts = @thoughts.paginate(page: params[:page], per_page: 20)
+  end
+
   def index
     @thoughts = Thought.order(post_time: :desc)
 
@@ -35,6 +71,9 @@ class ThoughtsController < ApplicationController
 
     # Show HIGHLIGHTED thoughts only
     @thoughts = @thoughts.where(highlight_mode: "true") if @selected_filter == "spotlight"
+
+    #Paginate thoughts
+    @thoughts = @thoughts.paginate(page: params[:page], per_page: 20)
   end
 
   #def show

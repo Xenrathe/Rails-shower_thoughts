@@ -1,5 +1,4 @@
 .thoughts {
-  height: 100vh;
   width: 100vw;
   margin: 0px;
   padding: 0px;
@@ -117,6 +116,7 @@
 
 .thoughts .thoughts-container {
   margin: 0px 100px 25px 100px;
+  padding-top: 10px;
   column-count: 3;
   column-gap: 20px; 
 }

@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "responders", "~> 3.1"
+
+gem 'will_paginate', '~> 4.0'
