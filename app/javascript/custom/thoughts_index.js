@@ -53,22 +53,25 @@ function applySelectedFilter(selected_filter) {
 }
 
 function loadMoreThoughts() {
-  const thoughtsContainer = document.querySelector('.thoughts-container');
-  var nextPage = parseInt(document.querySelector("#current-page").value) + 1; // Example: Get the next page number
+  const thoughtsContainer = document.querySelector('.thoughts');
+  var currentPage = parseInt(document.querySelector("#current-page").value);
 
-  const url = `/thoughts/page?page=${nextPage}`;
+  const url = `/thoughts/page?page=${currentPage + 1}`;
   fetch(url)
     .then((response) => response.text())
     .then((data) => {
-      thoughtsContainer.insertAdjacentHTML('beforeend', data);
-      nextPage++;
+      console.log(data);
+      if (data != "Empty")
+      {
+        currentPage += 1;
+        data = "<div class=\"page-label\">Page " + currentPage + "<div class=\"horizontal-line\"></div>" + "</div><div class=\"thoughts-page\">" + data + "</div>";
+        thoughtsContainer.insertAdjacentHTML('beforeend', data);
+        document.querySelector("#current-page").value = currentPage;
+      }
     })
     .catch((error) => {
       console.error('Error loading more thoughts:', error);
     });
-
-    // Update the current page value
-    document.querySelector("#current-page").value = nextPage;
 }
 
 function initializeFunctions()

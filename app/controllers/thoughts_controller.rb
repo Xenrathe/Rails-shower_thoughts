@@ -38,6 +38,12 @@ class ThoughtsController < ApplicationController
 
     #Paginate thoughts
     @thoughts = @thoughts.paginate(page: params[:page], per_page: 20)
+
+    if @thoughts.empty?
+      render plain: "Empty"
+    else
+      render :page
+    end
   end
 
   def index
