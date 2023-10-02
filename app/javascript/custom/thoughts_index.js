@@ -56,7 +56,7 @@ function loadMoreThoughts() {
   const thoughtsContainer = document.querySelector('.thoughts');
   var currentPage = parseInt(document.querySelector("#current-page").value);
 
-  const url = `/thoughts/page?page=${currentPage + 1}`;
+  const url = `/thoughts?page=${currentPage + 1}`;
   fetch(url)
     .then((response) => response.text())
     .then((data) => {
