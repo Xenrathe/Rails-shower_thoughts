@@ -27,6 +27,7 @@
   letter-spacing: 0.05em;
   background-clip: text;
   -webkit-background-clip: text;
+  white-space: normal;
 }
 
 .thoughts .texture,
@@ -98,12 +99,23 @@
 .thoughts .thoughts-filters, .thoughts .solo-action {
   align-self: center;
   display: flex;
+  align-items: center;
   gap: 30px;
   margin-bottom: 10px;
   padding: 4px 15px;
   border-width: 3px;
   border-style: outset;
   border-color: black;
+}
+
+.thoughts .img-solo {
+  height: 85px;
+  width: 80px;
+}
+
+.thoughts .img-filter {
+  height: 75px;
+  width: 75px;
 }
 
 .thoughts .thoughts-filters .selected {
@@ -129,6 +141,7 @@
   padding-top: 10px;
   column-count: 3;
   column-gap: 20px;
+  min-width: 350px;
 }
 
 .thoughts .single-thought {
@@ -330,4 +343,58 @@
   background-color:rgb(104, 137, 156);
   transform: scale(0.98);
   box-shadow: none;
+}
+
+@media screen and (min-width: 751px) and (max-width: 999px) {
+  .thoughts .thoughts-page {
+    margin: 0px 100px 25px 100px;
+    column-count: 2;
+  }
+
+  .thoughts .index-actions {
+    width: 100%;
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+
+  .thoughts .title-word{
+    font-size: 57px;
+    text-align: center;
+  }
+
+  .thoughts .title-break::after {
+    content: "\A";
+    white-space: pre;
+  }
+  
+  .thoughts .thoughts-page {
+    margin: 0px 100px 25px 100px;
+    column-count: 1;
+  }
+
+  .thoughts .index-actions {
+    width: 100%;
+    gap: 0px;
+  }
+
+  :root {
+    --img-solo-height: calc((100vw - 350px) * .2125);
+    --img-solo-width: calc((100vw - 350px) / 5 );
+  }
+
+  .thoughts .img-solo {
+    height: var(--img-solo-height);
+    min-height: 40.5px;
+    width: var(--img-solo-width);
+    min-width: 38px;
+  }
+  
+  .thoughts .img-filter {
+    height: calc(var(--img-solo-height) - 10px);
+    min-height: 30.5px;
+    width: calc(var(--img-solo-height) - 10px);
+    min-width: 30.5px;
+  }
 }
