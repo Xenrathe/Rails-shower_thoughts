@@ -116,6 +116,7 @@ class ThoughtsController < ApplicationController
       if @thought.user_id != current_user.id
         @thought.update(highlight_mode: 'true')
         current_user.update(plumber_status: 'No')
+        flash[:highlight] = 'Thought highlighted!'
         render json: { status: 'spotlighted' }
       else
         flash[:alert] = "You cannot spotlight your own thought."
@@ -127,6 +128,7 @@ class ThoughtsController < ApplicationController
         render json: { status: 'unspotlighted' }
       else
         @thought.update(highlight_mode: 'true')
+        flash[:plumber] = 'Thought highlighted!'
         render json: { status: 'spotlighted' }
       end
     end

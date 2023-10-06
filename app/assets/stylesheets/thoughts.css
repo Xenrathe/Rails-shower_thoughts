@@ -8,19 +8,19 @@
 }
 
 .thoughts .title-word{
-  background-image: url("water-shower.jpg");
+  background-image: url("water-shower-s.jpg");
   background-size: cover;
   font-size: calc(20px + 5vw);
 }
 
 .thoughts-new .title-word {
-  background-image: url("rainbow-con.jpg");
+  background-image: url("rainbow-con-s.jpg");
   font-size: calc(20px + 3vw);
 }
 
 .thoughts .title-word, .thoughts-new .title-word {
   position: relative;
-  margin: 15vh auto;
+  margin: 10vh auto;
   color: transparent;
   font-family: impact, sans-serif;
   font-weight: bolder;
@@ -48,12 +48,12 @@
 }
 
 .thoughts .texture::after{
-  background-image: url("water-shower.jpg");
+  background-image: url("water-shower-s.jpg");
   background-size: cover;
 }
 
 .thoughts-new .texture::after {
-  background-image: url("rainbow-con.jpg");
+  background-image: url("rainbow-con-s.jpg");
 }
 
 .thoughts .texture::after, .thoughts-new .texture::after {
@@ -62,7 +62,7 @@
   mix-blend-mode: multiply;
 }
 
-.thoughts .alert {
+.thoughts .alert-notice{
   align-self: center;
   padding: 20px;
   margin-top: -68px;
@@ -83,10 +83,74 @@
   }
 }
 
+.thoughts .alert-highlight {
+  width: max(250px, calc(100px + 20vw));
+  height: 200px;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  animation: fadeOutAndHide ease 4s;
+  opacity: 0;
+}
+
+.thoughts .alert-plumber {
+  width: min(calc(95vw), calc(200px + 25vw));
+  height: 200px;
+
+  color: rgb(48, 0, 0);
+  background-color: rgb(126, 229, 255);
+  border: 2px solid #656fff;
+  box-shadow: 0 0 5px rgba(0, 81, 255, 0.75);
+
+  animation: fadeOutAndHide ease 10s;
+  opacity: 0;
+}
+
+@keyframes fadeOutAndHide {
+  0% {
+    opacity:1;
+    visibility: visible;
+  }
+  25% {
+    opacity:1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.thoughts .alert-highlight, .thoughts .alert-plumber{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+  visibility: hidden;
+}
+
+.thoughts .alert-highlight .alert-text {
+  font-size: calc(20px + 3vw);
+}
+
+.thoughts .alert-plumber .alert-text {
+  font-size: calc(15px + 1.5vw);
+}
+
 .thoughts .index-actions {
   display: flex;
   position: sticky;
-  z-index: 9999;
+  z-index: 9995;
   top: 0px;
   padding-top: 5px;
   align-self: center;
@@ -213,7 +277,7 @@
   height: 90vh;
   width: 90vw;
   padding: 5vh 5vw;
-  background-image: url("blank-condensation.jpg");
+  background-image: url("blank-condensation-s.jpg");
   background-size: cover;
 
   display: flex;
@@ -346,8 +410,18 @@
 }
 
 @media screen and (min-width: 751px) and (max-width: 999px) {
+  
+  .thoughts .title-word{
+    font-size: 75px;
+    text-align: center;
+  }
+
+  .thoughts .title-break::after {
+    content: "\A";
+    white-space: pre;
+  }
+
   .thoughts .thoughts-page {
-    margin: 0px 100px 25px 100px;
     column-count: 2;
   }
 
@@ -360,7 +434,7 @@
 @media screen and (max-width: 750px) {
 
   .thoughts .title-word{
-    font-size: 57px;
+    font-size: 75px;
     text-align: center;
   }
 
@@ -370,7 +444,6 @@
   }
   
   .thoughts .thoughts-page {
-    margin: 0px 100px 25px 100px;
     column-count: 1;
   }
 

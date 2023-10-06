@@ -32,6 +32,9 @@ function actionButton(button)
         // Toggle classes
         childImg.classList.add('img-on');
         childImg.classList.remove('img-off');
+        if (data.status === 'spotlighted') {
+          location.reload();
+        }
       }
       // Handle other responses or error cases if needed
     })
