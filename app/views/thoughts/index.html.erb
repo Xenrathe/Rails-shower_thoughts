@@ -12,25 +12,8 @@
   </div>
   <% end %>
 
-  <div class="index-actions">
-    <div class="new-thought-action">
-      <%= link_to image_tag("icons/shower-head.svg", class: "img-action img-solo"), new_thought_path, class: "solo-action" %>
-    </div>
-    <div class="thoughts-filters">
-      <%= link_to image_tag("icons/eye.svg", class: "img-action img-filter"), thoughts_path(filter: 'visible'), class: "selected filter", data: { filter: 'visible' } %>
-      <% if user_signed_in? %>
-        <%= link_to image_tag("icons/star.svg", class: "img-action img-filter"), thoughts_path(filter: 'favorite'), class: "filter" , data: { filter: 'favorite' } %>
-      <% end %>
-      <%= link_to image_tag("icons/spotlight-beam.svg", class: "img-action img-filter"), thoughts_path(filter: 'spotlight'), class: "filter", data: { filter: 'spotlight' }  %>
-    </div>
-    <div class="login-action">
-      <% if user_signed_in? %>
-        <%= link_to image_tag("icons/logout-variant.svg", class: "img-action img-solo"), destroy_user_session_path, class: "solo-action", method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to sign out?' } %>
-      <% else %>
-        <%= link_to image_tag("icons/logout-variant.svg", class: "img-action img-solo"), new_user_session_path, class: "solo-action" %>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: 'actionbar', :locals => { :main_view => "index" } %>
+  
   <div class="thoughts-page">
     <%= render @thoughts %>
   </div>

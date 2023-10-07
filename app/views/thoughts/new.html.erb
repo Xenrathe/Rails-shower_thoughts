@@ -1,6 +1,9 @@
 <%= javascript_import_module_tag "custom/thoughts_new" %>
 
 <div class="thoughts-new">
+
+  <%= render partial: 'actionbar', :locals => { :main_view => "new_thought" } %>
+
   <div class="content-container">
     <div class="title-container">
       <span class="title-word">SHARE THOUGHT

@@ -147,7 +147,7 @@
   font-size: calc(15px + 1.5vw);
 }
 
-.thoughts .index-actions {
+.thoughts .index-actions, .thoughts-new .actionbar {
   display: flex;
   position: sticky;
   z-index: 9995;
@@ -157,10 +157,13 @@
   width: 100%;
   justify-content: center;
   gap: 65px;
+}
+
+.thoughts .index-actions {
   background: white;
 }
 
-.thoughts .thoughts-filters, .thoughts .solo-action {
+.thoughts .thoughts-filters, .thoughts .solo-action, .thoughts-new .solo-action, .thoughts-new .filter {
   align-self: center;
   display: flex;
   align-items: center;
@@ -172,7 +175,15 @@
   border-color: black;
 }
 
-.thoughts .img-solo {
+.thoughts-new .solo-action, .thoughts-new .filter {
+  background-color: rgb(0, 0, 0, 0.4);
+}
+
+.thoughts-new .solo-action:hover, .thoughts-new .filter:hover {
+  background-color: rgb(0, 0, 0, 0.6);
+}
+
+.thoughts .img-solo, .thoughts-new .img-solo, .thoughts-new .img-filter {
   height: 85px;
   width: 80px;
 }
@@ -274,9 +285,9 @@
 }
 
 .thoughts-new {
-  height: 90vh;
+  height: 96vh;
   width: 90vw;
-  padding: 5vh 5vw;
+  padding: 2vh 5vw;
   background-image: url("blank-condensation-s.jpg");
   background-size: cover;
 

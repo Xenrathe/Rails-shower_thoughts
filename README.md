@@ -7,7 +7,6 @@ To-do List:
 
 * Thoughts
 -Allow edit thought within 10 minutes of posting
--Button for back to thoughts index from new thought view
 -Change some of the backgrounds
 
 * Mobile Views?
