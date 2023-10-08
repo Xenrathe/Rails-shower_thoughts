@@ -153,6 +153,7 @@
   z-index: 9995;
   top: 0px;
   padding-top: 5px;
+  margin-bottom: 2px;
   align-self: center;
   width: 100%;
   justify-content: center;
@@ -212,7 +213,10 @@
 }
 
 .thoughts .thoughts-page {
-  margin: 0px 100px 25px 100px;
+  margin-top: 0px;
+  margin-bottom: 25px;
+  margin-left: min(100px, (100vw - 350px) / 2);
+  margin-right: min(100px, (100vw - 350px) / 2);
   padding-top: 10px;
   column-count: 3;
   column-gap: 20px;
@@ -445,7 +449,7 @@
 @media screen and (max-width: 750px) {
 
   .thoughts .title-word{
-    font-size: 75px;
+    font-size: 60px;
     text-align: center;
   }
 
@@ -480,5 +484,25 @@
     min-height: 30.5px;
     width: calc(var(--img-solo-height) - 10px);
     min-width: 30.5px;
+  }
+
+  .thoughts-new .img-action {
+    height: 65px;
+    width: 60px;
+  }
+
+  .thoughts-new .content-container {
+    width: 80vw;
+    height: 70vh;
+    margin-bottom: 0px;
+  }
+
+  .thoughts-new .content-input {
+    height: 290px;
+    max-height: 320px;
+  }
+
+  .thoughts-new #submit-button {
+    width: 80%;
   }
 }

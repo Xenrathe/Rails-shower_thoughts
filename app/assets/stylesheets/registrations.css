@@ -11,15 +11,14 @@ body {
 
 .registrations {
   height: 100vh;
+  width: 100vw;
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
 
   display: flex;
   flex-direction: column;
-  width: 100%;
   background: white;
-  margin: 0 6%;
 }
 
 .registrations .logo-bg{
@@ -95,12 +94,12 @@ body {
   animation-iteration-count: infinite;
   animation-name: drop;
   animation-timing-function: linear;
-  height: 30px;
+  height: 10px;
   position: relative;
   fill: #a1c6cc;
   transform-origin: center bottom;
   left: calc(var(--x) * 1%);
-  top: 0px;
+  top: -30px;
 }
 
 .rain__drop path {
@@ -125,7 +124,7 @@ body {
 
 .registrations .intro p{
   color: black;
-  font-size: calc(6px + 0.65vw);
+  font-size: calc(10px + 0.65vw);
   padding: 0px 15px 0px 15px;
   margin-top: auto;
 }
@@ -262,6 +261,10 @@ body {
 
   .registrations .intro p{
     padding: 0px calc(100px + 0.5vw) 0px 40px;
+  }
+
+  .rain__drop {
+    height: 30px;
   }
 
   @keyframes drop {

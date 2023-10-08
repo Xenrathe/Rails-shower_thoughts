@@ -61,6 +61,7 @@ class ThoughtsController < ApplicationController
 
     if ((current_user && current_user.plumber_status == 'Master') || current_user.last_post_date.nil? || current_user.last_post_date < DateTime.current - 24.hours) && @thought.save
       current_user.update(last_post_date: DateTime.now)
+      flash[:notice] = "Thought successfully created."
       redirect_to thoughts_path
     else
       render :new, status: :unprocessable_entity
@@ -87,6 +88,7 @@ class ThoughtsController < ApplicationController
     @thought = Thought.find(params[:id])
 
     if DateTime.now < @thought.post_time + 16.minutes && @thought.update(thought_params)
+      flash[:notice] = "Thought successfully edited."
       redirect_to thoughts_path
     else
       render :edit, status: :unprocessable_entity

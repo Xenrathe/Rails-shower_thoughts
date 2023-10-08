@@ -104,7 +104,7 @@ function initializeFunctions()
     if (!throttleTimeout) {
       throttleTimeout = setTimeout(() => {
         throttleTimeout = null;
-        if (window.innerHeight + window.scrollY >= document.querySelector('.thoughts').offsetHeight) {
+        if (window.innerHeight + window.scrollY + 10 >= document.querySelector('.thoughts').offsetHeight) {
           loadMoreThoughts();
         }
       }, 500);
