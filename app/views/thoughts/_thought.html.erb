@@ -16,7 +16,9 @@
               
               <% if thought.user_id == current_user.id &&  current_user.plumber_status != 'Master'%>
                 <%= link_to image_tag("icons/delete.svg", size: "25x25", class: "img-off") , thought_path(thought), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this thought?'} %>
-                <a href=""><%= image_tag("icons/text-box-edit.svg", size: "25x25", class: "img-off")%></a>
+                <% if DateTime.now < thought.post_time + 15.minutes %>
+                  <%= link_to image_tag("icons/text-box-edit.svg", size: "25x25", class: "img-off"), edit_thought_path(thought) %>
+                <% end %>
               <% end %>
             </div>
 

@@ -2,9 +2,9 @@
 
 <div class="thoughts-new">
 
-  <%= render partial: 'actionbar', :locals => { :main_view => "new_thought" } %>
+  <%= render partial: 'actionbar', :locals => { :main_view => "edit_thought" } %>
 
-  <%= render partial: 'form', :locals => { :main_view => "new_thought" } %>
+  <%= render partial: 'form', :locals => { :main_view => "edit_thought" } %>
 
   <% if @thought.errors.any? %>
     <div class="error_explanation">

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :thoughts, only: [:new, :create, :index, :destroy] do
+  resources :thoughts, only: [:new, :create, :edit, :update, :index, :destroy] do
     member do
       post 'hide'
       post 'favorite'

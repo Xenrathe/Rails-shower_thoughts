@@ -7,6 +7,9 @@ function initializeFunctions()
 
   //textarea (content) stuffs
   const textarea = document.getElementById('thought_content');
+  if (textarea === null)
+    return;
+
   updateContent();
   textarea.addEventListener('input', function() { updateContent(); });
 
@@ -14,6 +17,13 @@ function initializeFunctions()
   const titlearea = document.querySelector('.title-input');
   updateTitle();
   titlearea.addEventListener('input', function() { updateTitle(); });
+
+  //update Countdown stuffs
+  if (document.getElementById('countdown-timer') !== null)
+  {
+    setInterval(updateCountdown, 1000);
+    window.addEventListener('DOMContentLoaded', updateCountdown);
+  }
 }
 
 function updateContent()
@@ -59,6 +69,9 @@ function checkSubmitButton()
 {
   const submitButton = document.getElementById('submit-button');
 
+  if (submitButton === null)
+    return;
+
   const title = document.querySelector('.title-input');
   const titleCurrentLength = title.value.length;
   const titleMinLength = title.getAttribute('minlength');
@@ -80,6 +93,31 @@ function checkSubmitButton()
       submitButton.classList.add('btn-disabled');
       submitButton.classList.remove('btn-enabled')
     }
+  }
+}
+
+function updateCountdown() {
+  const deadlineElement = document.querySelector("#deadline-date");
+  if (deadlineElement === null)
+    return;
+  
+  const now = new Date();
+  const deadline = new Date(deadlineElement.value + 'Z');
+  const timeRemaining = (deadline - now ) / 1000;
+
+  if (timeRemaining <= 0) {
+    const submitButton = document.getElementById('submit-button');
+    submitButton.disabled = true;
+    if (submitButton.classList.contains('btn-enabled')){
+      submitButton.classList.add('btn-disabled');
+      submitButton.classList.remove('btn-enabled')
+    }
+    document.getElementById('countdown-timer').textContent = "Editing deadlined passed.";
+  }
+  else {
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = Math.floor(timeRemaining % 60);
+    document.getElementById('countdown-timer').textContent = `${minutes} minutes, ${seconds} seconds remaining to edit`;
   }
 }
 

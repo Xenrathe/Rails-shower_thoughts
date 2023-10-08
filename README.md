@@ -4,9 +4,10 @@ To-do List:
 
 * USER
 -Feedback when creating an account in which the password, etc is too low characters or passwords don't match
+-Mailer setup for getting e-mail about forgotten password
+-User control panel?
 
 * Thoughts
--Allow edit thought within 10 minutes of posting
 -Change some of the backgrounds
 
 * Mobile Views?

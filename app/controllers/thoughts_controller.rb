@@ -59,7 +59,7 @@ class ThoughtsController < ApplicationController
     @thought.user = current_user
     @thought.post_time = DateTime.current
 
-    if (current_user.plumber_status = 'Master' || current_user.last_post_date.nil? || current_user.last_post_date < DateTime.current - 24.hours) && @thought.save
+    if ((current_user && current_user.plumber_status == 'Master') || current_user.last_post_date.nil? || current_user.last_post_date < DateTime.current - 24.hours) && @thought.save
       current_user.update(last_post_date: DateTime.now)
       redirect_to thoughts_path
     else
@@ -76,6 +76,20 @@ class ThoughtsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to thoughts_url, notice: 'Thought deleted.' }
       format.json { head :no_content }
+    end
+  end
+
+  def edit
+    @thought = Thought.find(params[:id])
+  end
+
+  def update
+    @thought = Thought.find(params[:id])
+
+    if DateTime.now < @thought.post_time + 16.minutes && @thought.update(thought_params)
+      redirect_to thoughts_path
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

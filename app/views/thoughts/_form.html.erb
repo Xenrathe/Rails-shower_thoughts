@@ -1,0 +1,40 @@
+  <div class="content-container">
+    <div class="title-container">
+      <span class="title-word">
+      <% if main_view == 'new_thought' %>
+        CREATE THOUGHT
+      <% else %>
+        EDIT THOUGHT
+      <% end %>
+        <span class="texture"></span>
+      </span>
+    </div>
+
+    <div class="form-container">
+    <%= form_with model: @thought do |form| %>
+      <%= label_tag(:title, "TITLE") %>
+      <%= form.text_field :title, size: 30, maxlength: 30, minlength: 3, class: "title-input" %>
+      <div id="title-warning">3 character minimum</div>
+      <%= label_tag(:content, "THOUGHT") %>
+      <%= form.text_area :content, maxlength: 1500, minlength: 5, class: "content-input" %>
+      <div id="content-char-count">5 character minimum</div>
+      <% if main_view == 'new_thought' %>
+        <% if current_user.plumber_status == "Master" || current_user.last_post_date.nil? || current_user.last_post_date + 24.hours <= DateTime.current %>
+          <%= button_tag(type: 'submit', id: "submit-button",  class: "btn-disabled") do %>
+          Share Thought
+          <% end %>
+        <% else %>
+          <% hours_until_next_post = (24.hours - (DateTime.current.to_i - current_user.last_post_date.to_i)).to_i / 3600 %>
+          <div class="time-info">Cannot Share:<br> <%= hours_until_next_post %> hours until next allowed post</div>
+        <% end %>
+      <% else %>
+          <%= button_tag(type: 'submit', id: "submit-button",  class: "btn-disabled") do %>
+          Edit Thought
+          <% end %>
+          <% last_time_to_edit = @thought.post_time + 15.minutes %>
+          <input type="hidden" id="deadline-date" value="<%= last_time_to_edit.strftime('%Y-%m-%dT%H:%M:%S') %>">
+          <div class="time-info" id="countdown-timer"></div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
