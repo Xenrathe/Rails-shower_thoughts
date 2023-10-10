@@ -8,6 +8,8 @@
 
 Shower Thoughts is a micro social media app. What's micro mean? It means without all the engagement elements - Reddit's karma system, Facebook's like/friend system, Twitter's retweet, etc - meant to invest users more heavily into the system. Shower Thoughts eschews all that in favor of a light, simple system. Log in, post your daily (or weekly or monthly or never) thought, read other's anonymous thoughts, maybe even Highlight your favorite, and move on. Life and the Net are too grand, too multifarious, to spend your time trapped in a single space.
 
+Shower Thoughts is active on fly.io: (https://shower-thoughts.fly.dev/)
+
 ### Features:
 * User registration, login via Devise gem
 * Pagination via the will_paginate gem and javascript to automatically load next page via scrolling to bottom of page
@@ -26,3 +28,5 @@ Shower Thoughts is a micro social media app. What's micro mean? It means without
 * Shadowban also implements IP tracking to make the ban even more shadowy / invisible to the one banned
 * User control panel, allowing for deletion of account
 * Further filtering of thoughts, e.g. Comedic, Deep, etc
+* Title, icon
+* Higher-res texture images for higher-res screens
