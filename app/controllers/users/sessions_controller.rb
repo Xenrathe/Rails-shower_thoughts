@@ -21,7 +21,7 @@ class Users::SessionsController < Devise::SessionsController
         # Reset current plumber status (if they didn't use their one highlight, they lose it)
         unless @plumber_user.nil?
           @plumber_user.plumber_date = nil
-          @plumber_user.plumber_status = 'No'
+          @plumber_user.plumber_status = 'No' if @plumber_user.plumber_status != 'Master'
           @plumber_user.save
         end
 

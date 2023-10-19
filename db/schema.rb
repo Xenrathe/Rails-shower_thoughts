@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_22_005903) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_09_124144) do
   create_table "thoughts", force: :cascade do |t|
     t.datetime "post_time"
     t.string "title"
     t.string "content"
     t.string "highlight_mode"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["highlight_mode"], name: "index_thoughts_on_highlight_mode"

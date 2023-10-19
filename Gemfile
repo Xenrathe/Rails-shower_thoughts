@@ -76,3 +76,11 @@ gem "devise", "~> 4.9"
 gem "responders", "~> 3.1"
 
 gem 'will_paginate', '~> 4.0'
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "sentry-ruby", "~> 5.11"
+
+gem "sentry-rails", "~> 5.11"
+
+gem "pg", "~> 1.5"
