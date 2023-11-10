@@ -194,9 +194,13 @@
   width: 75px;
 }
 
-.thoughts .thoughts-filters .selected {
+.thoughts .thoughts-filters .filter {
   border-width: 3px;
   border-style: outset;
+  border-color: rgba(255, 217, 0, 0);
+}
+
+.thoughts .thoughts-filters .selected {
   border-color: gold;
 }
 
