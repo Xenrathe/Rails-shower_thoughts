@@ -28,5 +28,17 @@ Shower Thoughts is active on fly.io: (https://shower-thoughts.fly.dev/)
 * Shadowban also implements IP tracking to make the ban even more shadowy / invisible to the one banned
 * User control panel, allowing for deletion of account
 * Further filtering of thoughts, e.g. Comedic, Deep, etc
-* Title, icon
-* Higher-res texture images for higher-res screens
+
+### Design Brief
+This project was created as part of The Odin Project curriculum, expanding on the <a href="https://www.theodinproject.com/lessons/ruby-on-rails-members-only">Members Only!</a> project.
+
+### Image Attribution
+<a href="https://unsplash.com/photos/a-close-up-of-water-droplets-on-a-window-Diu8uAt7Ol8">Shower Condensation</a> by Patrick Hendry (on Unsplash)
+
+<a href="https://unsplash.com/photos/white-round-light-on-black-surface-oAICAyOGjiY">White round light</a> by Robert Guss (on Unsplash)
+
+<a href="https://unsplash.com/photos/water-droplets-on-glass-window-uxk0JKMrZts">Water droplets on glass window</a> by Kenrick Mills (on Unsplash)
+
+<a href="https://unsplash.com/photos/black-wooden-bench-beside-black-concrete-wall-IXsMURjOCQM">Black wooden bench beside black concrete wall</a> by Haley Truong (on Unsplash)
+
+<a href="https://unsplash.com/photos/grey-textile-OgZ1roVosRY">Grey textile</a> by Gracia Solenyanu (on Unsplash)
