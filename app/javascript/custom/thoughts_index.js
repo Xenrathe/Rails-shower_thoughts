@@ -63,7 +63,6 @@ function loadMoreThoughts() {
   fetch(url)
     .then((response) => response.text())
     .then((data) => {
-      console.log(data);
       if (data != "Empty")
       {
         currentPage += 1;

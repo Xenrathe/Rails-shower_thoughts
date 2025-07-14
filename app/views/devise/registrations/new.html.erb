@@ -54,6 +54,11 @@
             <%= f.email_field :email, autocomplete: "email" %>
           </div>
 
+          <div style="display: none;">
+            <%= label_tag :nickname %>
+            <%= text_field_tag :nickname %>
+          </div>
+
           <div class="field single-input">
             <%= f.label :password %>
             <%= f.password_field :password, autocomplete: "new-password" %>

@@ -11,28 +11,33 @@ Shower Thoughts is a micro social media app. What's micro mean? It means without
 Shower Thoughts is active on fly.io: (https://shower-thoughts.fly.dev/)
 
 ### Features:
-* User registration, login via Devise gem
-* Pagination via the will_paginate gem and javascript to automatically load next page via scrolling to bottom of page
-* Users can 'favorite' or 'unshow' Thoughts and filter by Shown, Favorite, or Highlighted.
-* Users can post one 'Shower Thought' every 24h, authenticated both client- and server-side
-* Users can edit their recent 'Shower Thought' for up to 15 minutes after posting, authenticated both client- and server-side
-* After a random 14-18h 'cooldown' timer, one user is randomly given Plumber status, able to highlight a single Shower Thought, which is given special styling
-* To deal with trolls and other poor behavior, admins can shadowban users, meaning they can still login and post thoughts and see their own thoughts - but no one else can see them
-  
+
+- User registration, login via Devise gem
+- Pagination via the will_paginate gem and javascript to automatically load next page via scrolling to bottom of page
+- Users can 'favorite' or 'unshow' Thoughts and filter by Shown, Favorite, or Highlighted.
+- Users can post one 'Shower Thought' every 24h, authenticated both client- and server-side
+- Users can edit their recent 'Shower Thought' for up to 15 minutes after posting, authenticated both client- and server-side
+- After a random 14-18h 'cooldown' timer, one user is randomly given Plumber status, able to highlight a single Shower Thought, which is given special styling
+- To deal with trolls and other poor behavior, admins can shadowban users, meaning they can still login and post thoughts and see their own thoughts - but no one else can see them
+
 ![Screenshot of the main index page](https://github.com/Xenrathe/Rails-shower_thoughts/blob/main/ShowerThoughtsIndex.png?raw=true)
 
 ### Potential future improvements
-* Improve some of the backgrounds / change them around
-* Improved CSS styling, especially on buttons
-* Mailer integration for retrieving forgotten password
-* Shadowban also implements IP tracking to make the ban even more shadowy / invisible to the one banned
-* User control panel, allowing for deletion of account
-* Further filtering of thoughts, e.g. Comedic, Deep, etc
+
+- Improve some of the backgrounds / change them around
+- Improved CSS styling, especially on buttons
+- Shadowban also implements IP tracking to make the ban even more shadowy / invisible to the one banned
+- User control panel, allowing for deletion of account
+- Further filtering of thoughts, e.g. Comedic, Deep, etc
+- Omni-Auth integration
+- Conversion to SPA (Single-Page App), via turbo
 
 ### Design Brief
+
 This project was created as part of The Odin Project curriculum, expanding on the <a href="https://www.theodinproject.com/lessons/ruby-on-rails-members-only">Members Only!</a> project.
 
 ### Image Attribution
+
 <a href="https://unsplash.com/photos/a-close-up-of-water-droplets-on-a-window-Diu8uAt7Ol8">Shower Condensation</a> by Patrick Hendry (on Unsplash)
 
 <a href="https://unsplash.com/photos/white-round-light-on-black-surface-oAICAyOGjiY">White round light</a> by Robert Guss (on Unsplash)

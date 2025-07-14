@@ -11,10 +11,17 @@
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
+      <div style="display: none;">
+        <%= label_tag :nickname %>
+        <%= text_field_tag :nickname, nil %>
+      </div>
+
       <div class="actions submit">
         <%= button_tag(type: 'submit') do %>
         Reset Password
         <% end %>
+        <div class="notice"><%= notice %></div>
+        <div class="alert"><%= alert %></div>
         <%= render "devise/shared/error_messages", resource: resource %>
       </div>
     <% end %>
@@ -24,6 +31,4 @@
     <span>New to Shower-Thoughts?</span>
     <%= link_to "Create Account", new_user_registration_path %> 
   </div>
-  <div class="notice"><%= notice %></div>
-  <div class="alert"><%= alert %></div>
 </div>
